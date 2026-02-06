@@ -16,9 +16,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { 
-      solicitante, email, setor, cargo, empresa, 
-      necessidade, aplicacao, prioridade, informacoesGerais 
+    const {
+      solicitante, email, setor, cargo, empresa,
+      necessidade, aplicacao, prioridade, informacoesGerais
     } = req.body;
 
     // 2. Validação de Campos Obrigatórios
@@ -41,16 +41,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // 5. Montagem do Payload para Power Automate
     const payload = {
-      solicitante_nome: String(solicitante).trim(),
-      solicitante_email: String(email).trim().toLowerCase(),
-      area_solicitante: String(setor).trim(),
+      solicitante: String(solicitante).trim(),
+      email: String(email).trim().toLowerCase(),
+      setor: String(setor).trim(),
       cargo: cargo ? String(cargo).trim() : "Não informado",
       empresa: empresa ? String(empresa).trim() : "Grupo A.Cândido",
-      titulo: String(necessidade).trim(),
-      descricao: String(aplicacao).trim(),
-      prioridade: normalizedPriority,
-      informacoes_gerais: informacoesGerais ? String(informacoesGerais).trim() : "N/A",
-      data_solicitacao: new Date().toISOString()
+      necessidadeSetor: String(necessidade).trim(),
+      aplicacaoSolicitacao: String(aplicacao).trim(),
+      prioridade: String(normalizedPriority).trim(),
+      informacoesGerais: informacoesGerais ? String(informacoesGerais).trim() : "",
+      origem: "portal-qualidade",
+      timestamp: new Date().toISOString()
     };
 
     // 6. Envio para Power Automate (Variável de Ambiente)
@@ -70,9 +71,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json({ message: 'Solicitação registrada com sucesso no SharePoint.' });
     } else {
       const errorDetail = await response.text();
-      return res.status(502).json({ 
-        error: 'O Power Automate recusou a requisição.', 
-        detail: errorDetail.substring(0, 1000) 
+      return res.status(502).json({
+        error: 'O Power Automate recusou a requisição.',
+        detail: errorDetail.substring(0, 1000)
       });
     }
 
