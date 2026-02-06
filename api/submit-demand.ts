@@ -36,8 +36,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     // 4. Normalização de Prioridade
-    const validPriorities = ["Baixa", "Média", "Alta"];
+    const validPriorities = ["Baixa", "Média", "Alta", "Crítico"];
     const normalizedPriority = validPriorities.includes(prioridade) ? prioridade : "Média";
+
 
     // 5. Montagem do Payload para Power Automate
     const payload = {
