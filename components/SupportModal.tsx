@@ -14,17 +14,31 @@ const SupportModal: React.FC<SupportModalProps> = ({ onClose }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-    
+    const raw = Object.fromEntries(formData.entries());
+
+    const data = {
+      solicitante: String(raw.solicitante || '').trim(),
+      email: String(raw.email || '').trim(),
+      setor: String(raw.setor || '').trim(),
+      cargo: String(raw.cargo || '').trim(),
+      empresa: String(raw.empresa || '').trim(),
+      necessidade: String(raw.necessidade || '').trim(),
+      aplicacao: String(raw.aplicacao || '').trim(),
+      prioridade: String(raw.prioridade || '').trim(),
+      informacoesGerais: String(raw.informacoesGerais || '').trim(),
+    };
+
     // Reset e Validação Visual
     setErrors({});
     const newErrors: Record<string, string> = {};
+
     if (!data.solicitante) newErrors.solicitante = "Obrigatório";
     if (!data.email) newErrors.email = "Obrigatório";
     if (!data.setor) newErrors.setor = "Obrigatório";
     if (!data.necessidade) newErrors.necessidade = "Obrigatório";
     if (!data.aplicacao) newErrors.aplicacao = "Obrigatório";
     if (!data.prioridade) newErrors.prioridade = "Obrigatório";
+
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -62,9 +76,9 @@ const SupportModal: React.FC<SupportModalProps> = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-[#00194C]/90 backdrop-blur-xl animate-in fade-in duration-300" onClick={onClose}></div>
-      
+
       <div className="relative bg-white w-full max-w-5xl max-h-[90vh] rounded-[3rem] shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-bottom-20 duration-500">
-        <button 
+        <button
           onClick={onClose}
           className="absolute top-8 right-8 w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center hover:bg-[#F11E26] hover:text-white transition-all z-20"
         >
@@ -83,7 +97,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ onClose }) => {
               </div>
               <h2 className="text-4xl font-black text-[#00194C] uppercase tracking-tighter mb-4">Solicitação Enviada!</h2>
               <p className="text-xl text-[#00194C]/60 font-medium max-w-md">Os dados foram integrados à lista do SharePoint. Em breve retornaremos via e-mail.</p>
-              <button 
+              <button
                 onClick={onClose}
                 className="mt-10 px-12 py-4 bg-[#00194C] text-white rounded-2xl font-black uppercase tracking-widest text-sm hover:bg-[#F11E26] transition-all"
               >
@@ -165,7 +179,7 @@ const SupportModal: React.FC<SupportModalProps> = ({ onClose }) => {
                   </div>
                 )}
 
-                <button 
+                <button
                   type="submit"
                   disabled={status === 'loading'}
                   className={`
