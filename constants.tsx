@@ -119,7 +119,7 @@ export const TEAM: TeamMember[] = [
     name: "Adilson Soares",
     role: "Coordenador Corporativo",
     level: 1,
-    image: "public/team/adilson.jpg",
+    image: "/team/adilson.jpg",
     category: "Liderança Estratégica",
     email: "Qualidadejp@acandidotransportes.com.br"
   },
@@ -127,7 +127,7 @@ export const TEAM: TeamMember[] = [
     name: "Elinaldo Junior",
     role: "Analista Corporativo",
     level: 2,
-    image: "public/team/elinaldo.jpeg",
+    image: "/team/elinaldo.jpeg",
     category: "Análise Corporativa",
     email: "qualidade02jp@acandidotransportes.com.br"
   },
@@ -135,7 +135,7 @@ export const TEAM: TeamMember[] = [
     name: "Caio",
     role: "Supervisor Fretamento",
     level: 3,
-    image: "public/team/caio.png",
+    image: "/team/caio.png",
     category: "Supervisão Operacional",
     email: "manutencaojp@transnacionalfretamento.com.br"
   }
