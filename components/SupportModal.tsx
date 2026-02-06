@@ -54,7 +54,10 @@ const SupportModal: React.FC<SupportModalProps> = ({ onClose }) => {
         body: JSON.stringify(data)
       });
 
-      const result = await response.json();
+      const text = await response.text();
+      let result: any = {};
+      try { result = text ? JSON.parse(text) : {}; } catch { }
+
 
       if (response.ok) {
         setStatus('success');
