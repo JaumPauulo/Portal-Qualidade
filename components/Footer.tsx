@@ -72,7 +72,7 @@ const Footer: React.FC<FooterProps> = ({ onNav, onOpenSupport }) => {
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-white/20 font-black uppercase tracking-[0.3em]">
           <div className="flex flex-col md:flex-row gap-2 md:gap-8 items-center">
             <p>© {new Date().getFullYear()} Grupo A.Cândido.</p>
-            <p className="text-white/40">Feito por mim, João Paulo.</p>
+            <p className="text-white/40">Desenvolvido por João Paulo.</p>
           </div>
           <div className="flex gap-8">
             <span className="text-[#F11E26] border-b border-[#F11E26]/20 pb-1">Padronização</span>
