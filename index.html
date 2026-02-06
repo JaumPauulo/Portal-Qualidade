@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qualidade Corporativa | Grupo A.Cândido</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #00194C 0%, #002d8a 100%);
+            position: relative;
+        }
+        .tech-grid {
+            background-image: 
+                linear-gradient(rgba(241, 30, 38, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(241, 30, 38, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .highlight-pulse {
+            animation: highlight 1.5s ease-out;
+        }
+        @keyframes highlight {
+            0% { box-shadow: 0 0 0 0 rgba(241, 30, 38, 0.4); background-color: rgba(241, 30, 38, 0.1); }
+            100% { box-shadow: 0 0 0 20px transparent; background-color: transparent; }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        .hero-title-gradient {
+            background: linear-gradient(to right, #FFFFFF, #F11E26);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #00194C; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #F11E26; }
+
+        /* Modal Transitions */
+        .modal-enter { opacity: 0; transform: scale(0.95); }
+        .modal-enter-active { opacity: 1; transform: scale(1); transition: all 300s ease-out; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@vercel/node": "https://esm.sh/@vercel/node@^5.5.32"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-white text-[#00194C]">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
